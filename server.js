@@ -10,13 +10,17 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/user', (req, res, next) => {
+app.use(express.static(path.join(__dirname, '/public')));
+
+app.use('/user/', (req, res, next) => {
   res.show('logIn.html');
 });
 
-app.use(express.static(path.join(__dirname, '/public')));
-
 app.get('/', (req, res) => {
+  res.show('index.html');
+});
+
+app.get('/home', (req, res) => {
   res.show('index.html');
 });
 
